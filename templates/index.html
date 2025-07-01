@@ -1,0 +1,74 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>Simple 게시판</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <!-- 🟦 상단 바 -->
+   <div class="container">
+  <header class="top-bar">
+    <h1 class="title">Simple 게시판</h1>
+
+    <div class="search-area">
+    <input type="text" id="search" placeholder="검색어 입력" />
+    <button onclick="handleSearch()">검색</button>
+  </div>
+  </header>
+
+  <!-- 🟨 카테고리 바 -->
+  <nav class="category-bar">
+    <button class="category-btn" onclick="filterCategory('유머')">유머</button>
+    <button class="category-btn" onclick="filterCategory('게임')">게임</button>
+    <button class="category-btn" onclick="filterCategory('연애')">연애</button>
+    <button class="category-btn" onclick="filterCategory('스포츠')">스포츠</button>
+    <button class="category-btn" onclick="loadPosts()">전체</button>
+    <!-- 글 작성 버튼 -->
+  <div class="write-btn-area">
+    <button class="write-btn" onclick="toggleWriteForm()">글 작성</button>
+  </div>
+  </nav>
+
+
+<!-- 글쓰기 폼 (기본은 숨김 처리) -->
+<div class="write-form-area" id="write-form-area" style="display: none;">
+  <form id="write-form" onsubmit="handleSubmit(event)">
+    <label>작성자 이름</label><br />
+    <input type="text" name="name" required /><br />
+
+    <label>카테고리</label><br />
+    <select name="category" required>
+      <option value="유머">유머</option>
+      <option value="게임">게임</option>
+      <option value="연애">연애</option>
+      <option value="스포츠">스포츠</option>
+      <option value="일반">일반</option>
+    </select><br />
+
+    <label>제목</label><br />
+    <input type="text" name="title" required /><br />
+
+    <label>내용</label><br />
+    <textarea name="content" rows="5" required></textarea><br />
+
+    <button type="submit">작성 완료</button>
+    <button type="button" onclick="cancelWriteForm()">취소</button>
+  </form>
+</div>
+
+<!-- 기존 post-list 아래에 추가 -->
+<div id="post-detail" class="post-detail" style="display: none;">
+  <!-- JS로 내용 채울 예정 -->
+</div>
+
+
+  <!-- 🟩 글 리스트 영역 -->
+  <main id="post-list" class="post-list">
+    <!-- JS로 게시글 리스트 출력 예정 -->
+  </main>
+  </div>
+  <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
