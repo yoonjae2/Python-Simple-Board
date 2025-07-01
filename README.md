@@ -10,8 +10,9 @@ Python Flask와 SQLite로 만든 간단한 게시판 웹 애플리케이션입�
 - Python 3
 - Flask
 - SQLite
-- HTML/CSS
+- HTML / CSS
 - JavaScript (Vanilla JS)
+- JSON / REST API
 
 ## 프로젝트 구조
 - 'app.py' : Flask 서버 메인 파일
