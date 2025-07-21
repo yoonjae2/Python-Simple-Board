@@ -11,10 +11,6 @@ def get_conn():
     conn.row_factory = sqlite3.Row
     return conn
 
-# def get_conn():
-#     conn = sqlite3.connect('database.db')
-#     conn.row_factory = sqlite3.Row
-#     return conn
 
 # 🔹 메인 페이지
 @app.route('/')
@@ -39,7 +35,7 @@ def add_post():
         return jsonify({'result': 'error', 'message': str(e)}), 500
 
 
-# 🔹 게시글 전체 조회
+# 🔹 게시글 전체 조회 
 @app.route('/get_posts')
 def get_posts():
     conn = get_conn()
@@ -67,6 +63,7 @@ def get_comments(post_id):
     conn.close()
     return jsonify([dict(c) for c in comments])
 
+# 해당하는 카테고리 게시글 가져오기
 @app.route('/get_posts/<category>')
 def get_posts_by_category(category):
     try:
@@ -78,6 +75,7 @@ def get_posts_by_category(category):
         print(f"Error in /get_posts/{category}:", e)
         return jsonify([])
 
+# 제목 또는 내용을 가진 게시글 검색
 @app.route('/search_posts')
 def search_posts():
     keyword = request.args.get('keyword', '')
